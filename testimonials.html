@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Testimonials | Fly Desire Overseas</title>
+  <meta name="description" content="Student testimonials and success stories from Fly Desire Overseas." />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="/flydesire-website/index.html">
+          <span class="brand-badge">FD</span>
+          <span class="brand-text">
+            <span class="brand-name">Fly Desire</span>
+            <span class="brand-tagline">Fulfill Your Dream</span>
+          </span>
+        </a>
+        <nav class="nav" id="main-nav">
+          <a class="nav-link" href="/flydesire-website/index.html">Home</a>
+          <a class="nav-link" href="/flydesire-website/about.html">About Us</a>
+          <a class="nav-link" href="/flydesire-website/services.html">Services</a>
+          <a class="nav-link" href="/flydesire-website/contact.html">Contact</a>
+          <a class="nav-link" href="/flydesire-website/success-stories.html">Success Stories</a>
+          <a class="nav-link active" href="/flydesire-website/testimonials.html">Testimonials</a>
+        </nav>
+        <div class="header-actions">
+          <a class="header-phone" href="tel:+918826947257">+91 88269 47257</a>
+          <a class="btn btn-secondary" href="/flydesire-website/contact.html">Free Consultation</a>
+        </div>
+        <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="main-nav">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-hero hero-gradient">
+        <div class="container">
+          <span class="section-tag">Testimonials</span>
+          <h1>Success Stories<span>.</span></h1>
+          <p>No matter who you are, we’ve got what you need.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <h2>No matter who you are, we’ve got what you need.</h2>
+          </div>
+          <div class="testimonial-grid" id="testimonial-grid">
+            <p class="muted">Loading testimonials...</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-muted">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">Video Stories</span>
+            <h2>Hear It from Our Students</h2>
+            <p>Drop in your YouTube links if you want video testimonials.</p>
+          </div>
+          <div class="video-grid">
+            <div class="video-card">Video Slot 1</div>
+            <div class="video-card">Video Slot 2</div>
+            <div class="video-card">Video Slot 3</div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <div class="footer-brand">
+            <span class="brand-badge">FD</span>
+            <span>
+              <span class="brand-name">Fly Desire</span>
+              <span class="brand-tagline">Fulfill Your Dream</span>
+            </span>
+          </div>
+          <p>Fly Desire Overseas is an India-based overseas education consultancy specializing in student visa services and international admissions since 2018.</p>
+          <div class="social-row">
+            <a href="#">Facebook</a>
+            <a href="#">Instagram</a>
+            <a href="#">LinkedIn</a>
+            <a href="#">Twitter</a>
+          </div>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <a href="/flydesire-website/index.html">Home</a>
+          <a href="/flydesire-website/about.html">About Us</a>
+          <a href="/flydesire-website/services.html">Our Services</a>
+          <a href="/flydesire-website/contact.html">Contact Us</a>
+          <a href="/flydesire-website/success-stories.html">Success Stories</a>
+          <a href="/flydesire-website/testimonials.html">Testimonials</a>
+        </div>
+        <div>
+          <h4>Study Destinations</h4>
+          <p>Australia</p>
+          <p>United Kingdom</p>
+          <p>United States</p>
+          <p>Canada</p>
+          <p>New Zealand</p>
+          <p>Europe</p>
+        </div>
+        <div>
+          <h4>Our Offices</h4>
+          <p class="office"><strong>Delhi Office</strong><br />G-122, Adhyapak Nagar, Nangloi, West Delhi, Delhi – 110041</p>
+          <p class="office"><strong>Lucknow Office</strong><br />C 4/50, Viraj Khand-4, Gomti Nagar, Lucknow, UP – 226010</p>
+          <a href="tel:+918826947257">+91 88269 47257</a>
+          <a href="mailto:admissions@flydesire.com">admissions@flydesire.com</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Fly Desire Overseas. All rights reserved.</p>
+        <p>GST: 07DVFPK0867L1Z6</p>
+      </div>
+    </footer>
+
+    <a class="whatsapp-fab" href="https://wa.me/918826947257?text=Hello!%20I'm%20interested%20in%20overseas%20education%20consultation." target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+      <span>💬</span>
+      <span class="fab-badge">1</span>
+    </a>
+  </div>
+
+  <script>
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.getElementById('main-nav');
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      nav.classList.toggle('nav-open');
+    });
+
+    async function loadTestimonials() {
+      const container = document.getElementById('testimonial-grid');
+      try {
+        const response = await fetch('./testimonials/manifest.json', { cache: 'no-store' });
+        const items = await response.json();
+        if (!Array.isArray(items) || items.length === 0) {
+          container.innerHTML = '<p class="muted">No testimonials yet. Update testimonials/manifest.json.</p>';
+          return;
+        }
+        container.innerHTML = '';
+        items.forEach((item) => {
+          const card = document.createElement('div');
+          card.className = 'testimonial-card';
+
+          const img = document.createElement('img');
+          img.src = `./testimonials/${item.image}`;
+          img.alt = item.name || 'Student';
+
+          const program = document.createElement('span');
+          program.className = 'testimonial-tag';
+          program.textContent = item.program || 'Student';
+
+          const quote = document.createElement('p');
+          quote.textContent = item.quote || '';
+
+          const name = document.createElement('h4');
+          name.textContent = item.name || '';
+
+          const uni = document.createElement('p');
+          uni.className = 'testimonial-meta';
+          uni.textContent = item.university || '';
+
+          card.appendChild(program);
+          card.appendChild(img);
+          card.appendChild(quote);
+          card.appendChild(name);
+          card.appendChild(uni);
+          container.appendChild(card);
+        });
+      } catch (err) {
+        container.innerHTML = '<p class="muted">Unable to load testimonials right now.</p>';
+      }
+    }
+
+    loadTestimonials();
+  </script>
+</body>
+</html>
