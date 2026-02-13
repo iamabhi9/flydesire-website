@@ -1111,3 +1111,23 @@ main {
   box-shadow: var(--shadow);
   border: 1px solid rgba(13, 34, 53, 0.08);
 }
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.gallery-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid rgba(13, 34, 53, 0.08);
+  box-shadow: var(--shadow);
+}
+
+.gallery-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+}

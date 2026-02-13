@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Success Stories | Fly Desire Overseas</title>
+  <meta name="description" content="Explore our student success stories and visa approvals with Fly Desire Overseas." />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="/flydesire-website/index.html">
+          <span class="brand-badge">FD</span>
+          <span class="brand-text">
+            <span class="brand-name">Fly Desire</span>
+            <span class="brand-tagline">Fulfill Your Dream</span>
+          </span>
+        </a>
+        <nav class="nav" id="main-nav">
+          <a class="nav-link" href="/flydesire-website/index.html">Home</a>
+          <a class="nav-link" href="/flydesire-website/about.html">About Us</a>
+          <a class="nav-link" href="/flydesire-website/services.html">Services</a>
+          <a class="nav-link" href="/flydesire-website/contact.html">Contact</a>
+          <a class="nav-link active" href="/flydesire-website/success-stories.html">Success Stories</a>
+        </nav>
+        <div class="header-actions">
+          <a class="header-phone" href="tel:+918826947257">+91 88269 47257</a>
+          <a class="btn btn-secondary" href="/flydesire-website/contact.html">Free Consultation</a>
+        </div>
+        <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="main-nav">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-hero hero-gradient">
+        <div class="container">
+          <span class="section-tag">Success Stories</span>
+          <h1>Celebrating <span>Student Success</span></h1>
+          <p>Here are some of our proud moments. Add more images to the folder and update the manifest to showcase new success stories.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="gallery" id="success-gallery">
+            <p class="muted">Loading success stories...</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <div class="footer-brand">
+            <span class="brand-badge">FD</span>
+            <span>
+              <span class="brand-name">Fly Desire</span>
+              <span class="brand-tagline">Fulfill Your Dream</span>
+            </span>
+          </div>
+          <p>Fly Desire Overseas is an India-based overseas education consultancy specializing in student visa services and international admissions since 2018.</p>
+          <div class="social-row">
+            <a href="#">Facebook</a>
+            <a href="#">Instagram</a>
+            <a href="#">LinkedIn</a>
+            <a href="#">Twitter</a>
+          </div>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <a href="/flydesire-website/index.html">Home</a>
+          <a href="/flydesire-website/about.html">About Us</a>
+          <a href="/flydesire-website/services.html">Our Services</a>
+          <a href="/flydesire-website/contact.html">Contact Us</a>
+          <a href="/flydesire-website/success-stories.html">Success Stories</a>
+        </div>
+        <div>
+          <h4>Study Destinations</h4>
+          <p>Australia</p>
+          <p>United Kingdom</p>
+          <p>United States</p>
+          <p>Canada</p>
+          <p>New Zealand</p>
+          <p>Europe</p>
+        </div>
+        <div>
+          <h4>Our Offices</h4>
+          <p class="office"><strong>Delhi Office</strong><br />G-122, Adhyapak Nagar, Nangloi, West Delhi, Delhi – 110041</p>
+          <p class="office"><strong>Lucknow Office</strong><br />C 4/50, Viraj Khand-4, Gomti Nagar, Lucknow, UP – 226010</p>
+          <a href="tel:+918826947257">+91 88269 47257</a>
+          <a href="mailto:admissions@flydesire.com">admissions@flydesire.com</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Fly Desire Overseas. All rights reserved.</p>
+        <p>GST: 07DVFPK0867L1Z6</p>
+      </div>
+    </footer>
+
+    <a class="whatsapp-fab" href="https://wa.me/918826947257?text=Hello!%20I'm%20interested%20in%20overseas%20education%20consultation." target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+      <span>💬</span>
+      <span class="fab-badge">1</span>
+    </a>
+  </div>
+
+  <script>
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.getElementById('main-nav');
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      nav.classList.toggle('nav-open');
+    });
+
+    async function loadGallery() {
+      const container = document.getElementById('success-gallery');
+      try {
+        const response = await fetch('./success-stories/manifest.json', { cache: 'no-store' });
+        const items = await response.json();
+        if (!Array.isArray(items) || items.length === 0) {
+          container.innerHTML = '<p class="muted">No success stories yet. Add images to the folder and update manifest.json.</p>';
+          return;
+        }
+        container.innerHTML = '';
+        items.forEach((item) => {
+          const card = document.createElement('div');
+          card.className = 'gallery-card';
+          const img = document.createElement('img');
+          img.src = `./success-stories/${item.src}`;
+          img.alt = item.alt || 'Success story';
+          card.appendChild(img);
+          container.appendChild(card);
+        });
+      } catch (err) {
+        container.innerHTML = '<p class="muted">Unable to load gallery right now.</p>';
+      }
+    }
+
+    loadGallery();
+  </script>
+</body>
+</html>
