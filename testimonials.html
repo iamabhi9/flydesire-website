@@ -162,20 +162,7 @@
           program.textContent = item.program || 'Student';
 
           const quote = document.createElement('p');
-          quote.textContent = item.quote || '';
-
-          const name = document.createElement('h4');
-          name.textContent = item.name || '';
-
-          const uni = document.createElement('p');
-          uni.className = 'testimonial-meta';
-          uni.textContent = item.university || '';
-
-          card.appendChild(program);
-          card.appendChild(img);
-          card.appendChild(quote);
-          card.appendChild(name);
-          card.appendChild(uni);
+          quote.textContent = item.quote || '';card.appendChild(uni);
           container.appendChild(card);
         });
       } catch (err) {
