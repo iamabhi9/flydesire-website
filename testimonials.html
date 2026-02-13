@@ -141,8 +141,20 @@
 
     async function loadTestimonials() {
       const container = document.getElementById('testimonial-grid');
+      const basePath = window.location.origin + '/flydesire-website';
+      const manifestUrls = [
+        basePath + '/testimonials/manifest.json',
+        './testimonials/manifest.json'
+      ];
       try {
-        const response = await fetch('/flydesire-website/testimonials/manifest.json', { cache: 'no-store' });
+        let response = null;
+        for (const url of manifestUrls) {
+          response = await fetch(url, { cache: 'no-store' });
+          if (response.ok) break;
+        }
+        if (!response || !response.ok) {
+          throw new Error('Manifest not found');
+        }
         const items = await response.json();
         if (!Array.isArray(items) || items.length === 0) {
           container.innerHTML = '<p class="muted">No testimonials yet. Update testimonials/manifest.json.</p>';
@@ -166,7 +178,7 @@
           container.appendChild(card);
         });
       } catch (err) {
-        container.innerHTML = '<p class="muted">Unable to load testimonials right now.</p>';
+        container.innerHTML = '<p class="muted">Unable to load testimonials right now. Please check testimonials/manifest.json.</p>';
       }
     }
 
