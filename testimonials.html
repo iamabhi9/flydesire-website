@@ -130,6 +130,32 @@
     </a>
   </div>
 
+  <script id="testimonial-data" type="application/json">
+[
+  {
+    "name": "Student 1",
+    "program": "Bachelor Student",
+    "university": "University of Essex",
+    "quote": "I am incredibly satisfied with the experience. The team assisted me not only with obtaining my visa but also provided comprehensive support throughout my entire study application process.",
+    "image": "gagandeep.svg"
+  },
+  {
+    "name": "Student 2",
+    "program": "Masters Student",
+    "university": "University of Westminster",
+    "quote": "I had an amazing experience. Thanks for helping me with admission, interview tips, and visa guidance.",
+    "image": "deepak.svg"
+  },
+  {
+    "name": "Student 3",
+    "program": "MBA Student",
+    "university": "Brunel University",
+    "quote": "My visa process to the UK was effortless with their support. The interview preparation was excellent.",
+    "image": "bittu.svg"
+  }
+]
+  </script>
+
   <script>
     const toggle = document.querySelector('.menu-toggle');
     const nav = document.getElementById('main-nav');
@@ -149,10 +175,13 @@
           response = await fetch(url, { cache: 'no-store' });
           if (response.ok) break;
         }
-        if (!response || !response.ok) {
-          throw new Error('Manifest not found');
+        let items = null;
+        if (response && response.ok) {
+          items = await response.json();
+        } else {
+          const fallback = document.getElementById('testimonial-data');
+          items = fallback ? JSON.parse(fallback.textContent) : null;
         }
-        const items = await response.json();
         if (!Array.isArray(items) || items.length === 0) {
           container.innerHTML = '<p class="muted">No testimonials yet. Update testimonials/manifest.json.</p>';
           return;
