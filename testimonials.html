@@ -141,11 +141,8 @@
 
     async function loadTestimonials() {
       const container = document.getElementById('testimonial-grid');
-      const basePath = window.location.origin + '/flydesire-website';
-      const manifestUrls = [
-        basePath + '/testimonials/manifest.json',
-        './testimonials/manifest.json'
-      ];
+      const manifestUrl = new URL('testimonials/manifest.json', window.location.href).toString();
+      const manifestUrls = [manifestUrl, './testimonials/manifest.json'];
       try {
         let response = null;
         for (const url of manifestUrls) {
