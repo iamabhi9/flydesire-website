@@ -142,7 +142,7 @@
     async function loadTestimonials() {
       const container = document.getElementById('testimonial-grid');
       try {
-        const response = await fetch('./testimonials/manifest.json', { cache: 'no-store' });
+        const response = await fetch('/flydesire-website/testimonials/manifest.json', { cache: 'no-store' });
         const items = await response.json();
         if (!Array.isArray(items) || items.length === 0) {
           container.innerHTML = '<p class="muted">No testimonials yet. Update testimonials/manifest.json.</p>';
@@ -154,7 +154,7 @@
           card.className = 'testimonial-card';
 
           const img = document.createElement('img');
-          img.src = `./testimonials/${item.image}`;
+          img.src = `/flydesire-website/testimonials/${item.image}`;
           img.alt = item.name || 'Student';
 
           const program = document.createElement('span');
