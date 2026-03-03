@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">Fly Desire logo</title>
+  <desc id="desc">Open book icon with Fly Desire text and tagline</desc>
+  <rect width="256" height="256" fill="#d4d4d4"/>
+
+  <g transform="translate(128 66)">
+    <path d="M-48 -2 L-10 13 L-5 47 L-44 47 Z" fill="#9a2f94"/>
+    <path d="M48 -2 L10 13 L5 47 L44 47 Z" fill="#9a2f94"/>
+    <path d="M-10 13 L0 7 L10 13 L5 47 L-5 47 Z" fill="#8a2b8f"/>
+
+    <path d="M-10 13 C-29 0 -41 -8 -53 -11 C-47 2 -37 10 -26 14 C-19 16 -13 16 -10 13 Z" fill="#f2b430"/>
+    <path d="M10 13 C29 0 41 -8 53 -11 C47 2 37 10 26 14 C19 16 13 16 10 13 Z" fill="#93c748"/>
+  </g>
+
+  <text x="128" y="154" text-anchor="middle" font-family="Times New Roman, Georgia, serif" font-size="54" fill="#2e2f33" letter-spacing="0.8">FLY DESIRE</text>
+  <text x="128" y="182" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#4f5258" letter-spacing="1.2">FULLFILL YOUR DREAMS</text>
+</svg>
