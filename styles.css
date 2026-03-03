@@ -795,7 +795,7 @@ main {
   50% { transform: translateY(-10px); }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1320px) {
   .nav {
     position: fixed;
     top: 80px;
