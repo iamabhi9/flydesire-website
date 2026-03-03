@@ -74,8 +74,8 @@ img {
 
 .brand-logo {
   display: block;
-  width: auto;
-  height: 56px;
+  width: 160px;
+  height: auto;
 }
 
 .brand-badge {
@@ -657,8 +657,9 @@ main {
 
 .footer-logo {
   display: block;
-  width: auto;
-  height: 84px;
+  width: 220px;
+  max-width: 100%;
+  height: auto;
 }
 
 .footer-grid h4 {
@@ -828,11 +829,11 @@ main {
 
 @media (max-width: 720px) {
   .brand-logo {
-    height: 46px;
+    width: 132px;
   }
 
   .footer-logo {
-    height: 72px;
+    width: 180px;
   }
 
   .hero-stats {
